@@ -1,0 +1,44 @@
+type Minter @entity {
+  id: ID!
+  superOperator: Bytes! # address
+  enabled: Boolean! # bool
+}
+
+type MetaTransactionProcessor @entity {
+  id: ID!
+  metaTransactionProcessor: Bytes! # address
+  enabled: Boolean! # bool
+}
+
+type SuperOperator @entity {
+  id: ID!
+  superOperator: Bytes! # address
+  enabled: Boolean! # bool
+}
+
+type AdminChanged @entity {
+  id: ID!
+  oldAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+}
+
+type Transfer @entity {
+  id: ID!
+  _from: Bytes! # address
+  _to: Bytes! # address
+  _tokenId: BigInt! # uint256
+}
+
+type Approval @entity {
+  id: ID!
+  _owner: Bytes! # address
+  _approved: Bytes! # address
+  _tokenId: BigInt! # uint256
+}
+
+type ApprovalForAll @entity {
+  id: ID!
+  _owner: Bytes! # address
+  _operator: Bytes! # address
+  _approved: Boolean! # bool
+}

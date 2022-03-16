@@ -1,0 +1,41 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Land
+    network: mainnet
+    source:
+      address: "0x50f5474724e0Ee42D9a4e711ccFB275809Fd6d4a"
+      abi: Land
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Minter
+        - MetaTransactionProcessor
+        - SuperOperator
+        - AdminChanged
+        - Transfer
+        - Approval
+        - ApprovalForAll
+      abis:
+        - name: Land
+          file: ./abis/Land.json
+      eventHandlers:
+        - event: Minter(address,bool)
+          handler: handleMinter
+        - event: MetaTransactionProcessor(address,bool)
+          handler: handleMetaTransactionProcessor
+        - event: SuperOperator(address,bool)
+          handler: handleSuperOperator
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+      file: ./src/mapping.ts
