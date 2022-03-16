@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Land
@@ -17,11 +17,11 @@ dataSources:
         - Token
       abis:
         - name: Land
-          file: ./abis/Land.json
+          file: Land/abis/Land.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransferLand
-      file: ./src/mapping.ts
+      file: Land/Land.wasm
   - kind: ethereum
     name: Asset
     network: mainnet
@@ -37,8 +37,8 @@ dataSources:
         - Token
       abis:
         - name: Asset
-          file: ./abis/Asset.json
+          file: Asset/abis/Asset.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransferAsset
-      file: ./src/mapping.ts
+      file: Land/Land.wasm
